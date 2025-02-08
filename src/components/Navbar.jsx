@@ -6,9 +6,9 @@ export const Navbar = () => {
     <header>
         <nav>
             <ul>
-                <li><NavLink path='/'>Home</NavLink></li>
-                <li><NavLink path='/about'>About</NavLink></li>
-                <li><NavLink path='/login'>Logout</NavLink></li>
+                <li><NavLink to='/'>Home</NavLink></li>
+                <li><NavLink to='/about'>About</NavLink></li>
+                <li><NavLink to='/login'>Logout</NavLink></li>
             </ul>
         </nav>
     </header>

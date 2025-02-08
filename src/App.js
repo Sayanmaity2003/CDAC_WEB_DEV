@@ -6,6 +6,7 @@ import {Registration} from './pages/Registration/Registration'
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 import {DefaultLayout} from './layouts/DefaultLayout';
 import {About} from './pages/About/About';
+import {Error} from './components/Error';
 
 function App() {
   return (
@@ -17,7 +18,8 @@ function App() {
       <Route path='/registration' element={<Registration/>}/>
       <Route path='/' element={<DefaultLayout/>}>
         <Route index element={<Home/>}/>
-        <Route path='/about' element={<About/>}/>
+        <Route path='about' element={<About/>}/>
+        <Route path='*' element={<Error/>}/>
       </Route>
     </Routes>
     </BrowserRouter>
