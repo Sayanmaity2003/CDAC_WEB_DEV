@@ -1,12 +1,14 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
+// import { useState } from 'react'
+import {toast, ToastContainer} from 'react-toastify'  
 
 export const Login = () => {
   const [user, setUser] = useState({
     // username:"",
     // number:"",
-    email: " ",
-    password: " ",
+    email: "",
+    password: "",
   });
   const handleInput=(e)=>{
     console.log(e);
@@ -21,6 +23,17 @@ export const Login = () => {
 const handelSubmit= (e)=>{ //we pass async at last and for this we include await
   e.preventDefault();
   // alert(user); //this will show the dialogbox for user
+  const {email, password} = user;
+
+  if(!email || !password){
+    toast.error('Please fill in all fields');
+    return;
+  }else if(password.length<8){
+    toast.error('Password must be at least 8 characters long');
+    return;
+  }
+
+  toast.success("Login Successfull");
   console.log(user);
 };
   
@@ -34,7 +47,7 @@ const handelSubmit= (e)=>{ //we pass async at last and for this we include await
           name="email" 
           placeholder="email" 
           id="email" 
-          required
+          // required
           value={user.email}
           onChange={handleInput}
         />
@@ -45,7 +58,7 @@ const handelSubmit= (e)=>{ //we pass async at last and for this we include await
           name="password" 
           placeholder="password" 
           id="password" 
-          required
+          // required
           value={user.password}
           onChange={handleInput}
         />
@@ -55,6 +68,7 @@ const handelSubmit= (e)=>{ //we pass async at last and for this we include await
 
       <div>New User?</div>
       <div><Link to='/registration'>Register Yourself</Link></div>
+      <ToastContainer/>
     </>
   )
 }
